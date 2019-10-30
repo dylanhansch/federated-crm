@@ -5,7 +5,7 @@ This is a customer relationship management platform built for Federated Insuranc
 TODO
 
 ## Local Setup
-You will need PHP 7.2 (or greater), [Composer](https://getcomposer.org/), and any requirements listed in [Laravel's Server Requirements](https://laravel.com/docs/6.x#server-requirements).
+You will need PHP 7.2 (or greater), [Composer](https://getcomposer.org/), [NodeJS](https://nodejs.org/en/), [NPM](https://www.npmjs.com/), and any other requirements listed in [Laravel's Server Requirements](https://laravel.com/docs/6.x#server-requirements).
 
 Optionally, you can run a local MySQL server instance yourself. This is recommended. However, if you're uncomfortable with doing this you're welcome to use Dylan's remote MySQL server instead.
 
