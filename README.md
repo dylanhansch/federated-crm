@@ -5,7 +5,16 @@ This is a customer relationship management platform built for Federated Insuranc
 TODO
 
 ## Local Setup
-TODO
+You will need PHP 7.2 (or greater), [Composer](https://getcomposer.org/), and any requirements listed in [Laravel's Server Requirements](https://laravel.com/docs/6.x#server-requirements).
+
+Optionally, you can run a local MySQL server instance yourself. This is recommended. However, if you're uncomfortable with doing this you're welcome to use Dylan's remote MySQL server instead.
+
+### Running The App Locally
+1. Laravel provides a nice CLI tool called Artisan. It ships with the option to run a local PHP web server pre-bootstrapped for your application. Just run `php artisan serve` at the app root (/src).
+
+2. If you are running a local MySQL server - make sure it's running.
+
+3. If you are not using the "sync" queue driver locally, make sure your queue is running (e.g. Redis, Memcached, your DB)
 
 ## Learning Laravel
 
