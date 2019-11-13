@@ -96,6 +96,10 @@ return [
 			'charset' => 'utf8',
 			'prefix' => '',
 			'prefix_indexes' => true,
+			'grammar' => [
+				'query' => Illuminate\Database\Query\Grammars\SqlServerGrammar::class,
+				'schema' => Illuminate\Database\Schema\Grammars\SqlServerGrammar::class
+			]
 		],
 
 	],
