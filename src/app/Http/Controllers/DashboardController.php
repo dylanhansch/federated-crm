@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller {
 	public function __construct() {
-		// TODO: $this->middleware('auth');
+		$this->middleware('auth');
 	}
 
 	public function index() {
