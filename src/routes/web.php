@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes(['register' => false]); // For reference: \Illuminate\Routing\Router::auth()
+Auth::routes(['register' => false]); /** @see \Illuminate\Routing\Router::auth */
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
