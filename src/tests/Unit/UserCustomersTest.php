@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Customer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -49,5 +50,18 @@ class UserCustomersTest extends TestCase {
 		$user->allow('some-random-permission', $territory);
 
 		$this->assertCount(0, $user->customers());
+	}
+
+	/** @test */
+	public function superadminCustomerListContainsAllCustomers() {
+		$region = factory('App\Region')->create();
+		$district = factory('App\District')->create(['region_id' => $region->id]);
+		$territory = factory('App\Territory')->create(['district_id' => $district->id]);
+		factory('App\Customer', 3)->create(['territory_id' => $territory->id]);
+
+		$user = factory('App\User')->create();
+		$user->assign('superadmin');
+
+		$this->assertCount(Customer::all()->count(), $user->customers());
 	}
 }

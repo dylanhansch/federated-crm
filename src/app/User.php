@@ -45,6 +45,10 @@ class User extends Authenticatable {
 	 * @return \Illuminate\Support\Collection
 	 */
 	public function customers() {
+		if ($this->isA('superadmin')) {
+			return Customer::all()->collect();
+		}
+
 		$customers = [];
 
 		$permissions = DB::table('permissions')
