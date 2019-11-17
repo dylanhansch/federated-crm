@@ -22,6 +22,13 @@ class AuthServiceProvider extends ServiceProvider {
 	 */
 	public function boot() {
 		$this->registerPolicies();
-		//
+
+		Gate::define('access-customer', function ($user, $customer) {
+			return (
+				$user->can('access', $customer->territory) ||
+				$user->can('access', $customer->territory->district) ||
+				$user->can('access', $customer->territory->district->region)
+			);
+		});
 	}
 }
