@@ -38,6 +38,15 @@ class User extends Authenticatable {
 	];
 
 	/**
+	 * User's display name (first_name last_name)
+	 *
+	 * @return string
+	 */
+	public function getDisplayName() {
+		return "{$this->first_name} {$this->last_name}";
+	}
+
+	/**
 	 * Customers that user has access to (likely is responsible for working with in some capacity)
 	 *
 	 * TODO: Can likely optimize this a lot - maybe a better query
