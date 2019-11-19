@@ -46,7 +46,7 @@ class User extends Authenticatable {
 	 */
 	public function customers() {
 		if ($this->isA('superadmin')) {
-			return Customer::all()->collect();
+			return Customer::all();
 		}
 
 		$customers = [];
