@@ -14,6 +14,7 @@ class DistrictController extends Controller {
 		$this->middleware('can:create-districts')->only(['create', 'store']);
 		$this->middleware('can:edit-districts')->only(['edit', 'update']);
 		$this->middleware('can:destroy-districts')->only(['destroy']);
+		$this->middleware('can:manage-district-user-assignments')->only(['addAssignedUser', 'removeAssignedUser']);
 	}
 
 	/**

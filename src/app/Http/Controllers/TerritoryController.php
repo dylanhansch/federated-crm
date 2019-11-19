@@ -14,6 +14,7 @@ class TerritoryController extends Controller {
 		$this->middleware('can:create-territories')->only(['create', 'store']);
 		$this->middleware('can:edit-territories')->only(['edit', 'update']);
 		$this->middleware('can:destroy-territories')->only(['destroy']);
+		$this->middleware('can:manage-territory-user-assignments')->only(['addAssignedUser', 'removeAssignedUser']);
 	}
 
 	/**
