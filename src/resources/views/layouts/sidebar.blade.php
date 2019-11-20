@@ -43,6 +43,14 @@
 					</a>
 				</li>
 			@endcan
+			@can('view-users')
+				<li class="nav-item">
+					<a class="nav-link @if(request()->routeIs('users*')) active @endif" href="{{ route('users.index') }}">
+						<span data-feather="user"></span>
+						Users
+					</a>
+				</li>
+			@endcan
 		</ul>
 
 		<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
