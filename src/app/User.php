@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable {
@@ -42,8 +43,16 @@ class User extends Authenticatable {
 	 *
 	 * @return string
 	 */
-	public function getDisplayName() {
+	public function getDisplayName(): string {
 		return "{$this->first_name} {$this->last_name}";
+	}
+
+	/**
+	 * @param string $password
+	 */
+	public function changePassword(string $password): void {
+		$this->password = Hash::make($password);
+		$this->save();
 	}
 
 	/**
