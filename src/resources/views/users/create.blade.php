@@ -48,6 +48,15 @@
 				</div>
 
 				<div class="form-group row">
+					<div class="col-md-6">
+						<p>Roles:</p>
+						@foreach ($roles as $role)
+							<input type="checkbox" name="roles[]" value="{{ $role->name }}" id="{{ $role->name }}"><label for="{{ $role->name }}"> {{ $role->title }}</label>
+						@endforeach
+					</div>
+				</div>
+
+				<div class="form-group row">
 					<div class="col-md-3">
 						<button class="btn btn-primary" type="submit" name="create">Create</button>
 					</div>

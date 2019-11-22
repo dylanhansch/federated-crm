@@ -25,7 +25,7 @@
 			<tbody>
 			@foreach ($users as $user)
 				<tr>
-					<td><a href="{{ route('users.show', ['user' => $user->id]) }}">{{ $user->getDisplayName() }}</a></td>
+					<td>{{ $user->getDisplayName() }}</td>
 					<td>
 						<a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-primary">Edit</a>
 						<form method="POST" action="{{ route('users.destroy', ['user' => $user->id]) }}" style="display:inline;">
