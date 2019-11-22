@@ -1,5 +1,5 @@
 # Federated CRM
-This is a customer relationship management platform built for Federated Insurance in MNSU's IT380 class.
+This is a customer relationship management system built for Federated Insurance in MNSU's IT380 class.
 
 ### Running The App Locally
 1. Make sure all dependencies are installed, .env is correct, any initialization is done, etc. For help with this: https://github.com/dylanhansch/federated-crm/wiki/Setup
