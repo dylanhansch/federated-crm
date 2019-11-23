@@ -18,6 +18,8 @@ Route::get('/', 'DashboardController@index')->name('dashboard');
 
 Route::resource('/users', 'UserController');
 
+Route::resource('/customers', 'CustomerController');
+
 Route::resource('/regions', 'RegionController');
 Route::post('/regions/{region}/addAssignedUser', 'RegionController@addAssignedUser')->name('regions.addAssignedUser');
 Route::delete('/regions/{region}/removeAssignedUser/{user}', 'RegionController@removeAssignedUser')->name('regions.removeAssignedUser');

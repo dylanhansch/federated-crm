@@ -56,9 +56,55 @@ class User extends Authenticatable {
 	}
 
 	/**
-	 * Customers that user has access to (likely is responsible for working with in some capacity)
+	 * Get all territories that user has explicit access to
 	 *
-	 * TODO: Can likely optimize this a lot - maybe a better query
+	 * @return mixed
+	 */
+	public function getTerritories() {
+		return Territory::join('abilities', 'territories.id', '=', 'abilities.entity_id')
+			->join('permissions', 'permissions.ability_id', '=', 'abilities.id')
+			->where('permissions.entity_type', 'App\User')
+			->where('permissions.entity_id', $this->id)
+			->where('abilities.name', 'access')
+			->where('abilities.entity_type', 'App\Territory')
+			->select('territories.*')
+			->get();
+	}
+
+	/**
+	 * Get all districts that user has explicit access to
+	 *
+	 * @return mixed
+	 */
+	public function getDistricts() {
+		return District::join('abilities', 'districts.id', '=', 'abilities.entity_id')
+			->join('permissions', 'permissions.ability_id', '=', 'abilities.id')
+			->where('permissions.entity_type', 'App\User')
+			->where('permissions.entity_id', $this->id)
+			->where('abilities.name', 'access')
+			->where('abilities.entity_type', 'App\District')
+			->select('districts.*')
+			->get();
+	}
+
+	/**
+	 * Get all regions that user has explicit access to
+	 *
+	 * @return mixed
+	 */
+	public function getRegions() {
+		return Region::join('abilities', 'regions.id', '=', 'abilities.entity_id')
+			->join('permissions', 'permissions.ability_id', '=', 'abilities.id')
+			->where('permissions.entity_type', 'App\User')
+			->where('permissions.entity_id', $this->id)
+			->where('abilities.name', 'access')
+			->where('abilities.entity_type', 'App\Region')
+			->select('regions.*')
+			->get();
+	}
+
+	/**
+	 * Customers that user has access to (likely is responsible for working with in some capacity)
 	 *
 	 * @return \Illuminate\Support\Collection
 	 */

@@ -42,8 +42,6 @@ class UserController extends Controller {
 	/**
 	 * Persist new user to DB
 	 *
-	 * TODO: Should make sure user has permission to assign a specific role - we don't want HR making superadmins
-	 *
 	 * @param \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
@@ -194,8 +192,6 @@ class UserController extends Controller {
 
 	/**
 	 * Delete user
-	 *
-	 * TODO: Need to make sure customer grouping assignments, other data created (like notes, etc.) that are linked to user are still displayed properly post-delete
 	 *
 	 * @param User $user
 	 * @return \Illuminate\Http\RedirectResponse

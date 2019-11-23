@@ -8,17 +8,17 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link @if(request()->routeIs('customers*')) active @endif" href="#">
+				<a class="nav-link @if(request()->routeIs('customers*')) active @endif" href="{{ route('customers.index') }}">
 					<span data-feather="users"></span>
 					Customers
 				</a>
 			</li>
-			<li class="nav-item">
+			<!--<li class="nav-item">
 				<a class="nav-link @if(request()->routeIs('reports*')) active @endif" href="#">
 					<span data-feather="bar-chart-2"></span>
 					Reports
 				</a>
-			</li>
+			</li>-->
 			@can('view-regions')
 			<li class="nav-item">
 				<a class="nav-link @if(request()->routeIs('regions*')) active @endif" href="{{ route('regions.index') }}">
@@ -53,7 +53,7 @@
 			@endcan
 		</ul>
 
-		<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+		<!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 			<span>Saved reports</span>
 			<a class="d-flex align-items-center text-muted" href="#">
 				<span data-feather="plus-circle"></span>
@@ -84,6 +84,6 @@
 					Year-end sale
 				</a>
 			</li>
-		</ul>
+		</ul>-->
 	</div>
 </nav>
