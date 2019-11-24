@@ -63,6 +63,14 @@
 							@endforeach
 						</select>
 					</div>
+					<div class="col-md-3">
+						<label for="associations">Associations:</label>
+						<select class="form-control" name="associations[]" id="associations" multiple>
+							@foreach ($associations as $association)
+								<option value="{{ $association->id }}">{{ $association->name }}</option>
+							@endforeach
+						</select>
+					</div>
 				</div>
 
 

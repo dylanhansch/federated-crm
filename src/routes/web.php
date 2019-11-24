@@ -31,3 +31,5 @@ Route::delete('/districts/{district}/removeAssignedUser/{user}', 'DistrictContro
 Route::resource('/territories', 'TerritoryController');
 Route::post('/territories/{territory}/addAssignedUser', 'TerritoryController@addAssignedUser')->name('territories.addAssignedUser');
 Route::delete('/territories/{territory}/removeAssignedUser/{user}', 'TerritoryController@removeAssignedUser')->name('territories.removeAssignedUser');
+
+Route::resource('/associations', 'AssociationController');

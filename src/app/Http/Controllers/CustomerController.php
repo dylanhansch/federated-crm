@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Association;
 use App\Customer;
 use App\Territory;
 use App\User;
@@ -33,8 +34,9 @@ class CustomerController extends Controller {
 	 */
 	public function create() {
 		$territories = auth()->user()->isA('superadmin') ? Territory::all() : auth()->user()->getTerritories();
+		$associations = Association::all();
 
-		return view('customers.create', compact('territories'));
+		return view('customers.create', compact('territories', 'associations'));
 	}
 
 	/**
@@ -66,7 +68,8 @@ class CustomerController extends Controller {
 			'city' => 'required|string|max:255',
 			'subdivision' => 'required|string|max:255',
 			'postal_code' => 'required|string|max:10',
-			'country' => 'required|string|max:255'
+			'country' => 'required|string|max:255',
+			'associations[]' => 'nullable|string|max:255'
 		]);
 
 		if ($validator->fails()) {
@@ -75,24 +78,17 @@ class CustomerController extends Controller {
 				->withInput();
 		}
 
-		$customer = Customer::create([
-			'territory_id' => $requestData['territory_id'],
-			'first_name' => $requestData['first_name'],
-			'middle_name' => $requestData['middle_name'],
-			'last_name' => $requestData['last_name'],
-			'email' => $requestData['email'],
-			'phone_number' => $requestData['phone_number'],
-			'company_name' => $requestData['company_name'],
-			'business_type' => $requestData['business_type'],
-			'website' => $requestData['website'],
-			'status' => $requestData['status'],
-			'street_address_1' => $requestData['street_address_1'],
-			'street_address_2' => $requestData['street_address_2'],
-			'city' => $requestData['city'],
-			'subdivision' => $requestData['subdivision'],
-			'postal_code' => $requestData['postal_code'],
-			'country' => $requestData['country']
-		]);
+		$customer = Customer::create($request->except('add', 'associations'));
+
+		if (array_key_exists('associations', $requestData)) {
+			foreach ($requestData['associations'] as $association) {
+				if (($association = Association::find($association)) == null) {
+					continue;
+				}
+
+				$customer->addAssociation($association);
+			}
+		}
 
 		return redirect()->route('customers.index')->with('success', "Created \"{$customer->getDisplayName()}\"");
 	}
@@ -115,8 +111,9 @@ class CustomerController extends Controller {
 	 */
 	public function edit(Customer $customer) {
 		$territories = auth()->user()->isA('superadmin') ? Territory::all() : auth()->user()->getTerritories();
+		$associations = Association::all();
 
-		return view('customers.edit', compact('customer', 'territories'));
+		return view('customers.edit', compact('customer', 'territories', 'associations'));
 	}
 
 	/**
@@ -149,7 +146,8 @@ class CustomerController extends Controller {
 			'city' => 'required|string|max:255',
 			'subdivision' => 'required|string|max:255',
 			'postal_code' => 'required|string|max:10',
-			'country' => 'required|string|max:255'
+			'country' => 'required|string|max:255',
+			'associations[]' => 'nullable|string|max:255'
 		]);
 
 		if ($validator->fails()) {
@@ -188,6 +186,19 @@ class CustomerController extends Controller {
 
 		if ($modified) {
 			$customer->save();
+		}
+
+		$associations = Association::all();
+		foreach ($associations as $association) {
+			if (!isset($requestData['associations'])) {
+				$customer->removeAssociation($association);
+				continue;
+			}
+			if (in_array($association->id, $requestData['associations'])) {
+				$customer->addAssociation($association);
+			} else {
+				$customer->removeAssociation($association);
+			}
 		}
 
 		return redirect()->route('customers.edit', ['customer' => $customer->id])->with('success', "Updated \"{$customer->getDisplayName()}\"");

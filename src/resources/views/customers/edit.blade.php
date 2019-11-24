@@ -64,6 +64,14 @@
 							@endforeach
 						</select>
 					</div>
+					<div class="col-md-3">
+						<label for="associations">Associations:</label>
+						<select class="form-control" name="associations[]" id="associations" multiple>
+							@foreach ($associations as $association)
+								<option value="{{ $association->id }}" @if ($customer->associations->contains('id', $association->id)) selected @endif>{{ $association->name }}</option>
+							@endforeach
+						</select>
+					</div>
 				</div>
 
 

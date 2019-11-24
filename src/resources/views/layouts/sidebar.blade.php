@@ -46,8 +46,16 @@
 			@can('view-users')
 				<li class="nav-item">
 					<a class="nav-link @if(request()->routeIs('users*')) active @endif" href="{{ route('users.index') }}">
-						<span data-feather="user"></span>
+						<span data-feather="users"></span>
 						Users
+					</a>
+				</li>
+			@endcan
+			@can('view-associations')
+				<li class="nav-item">
+					<a class="nav-link @if(request()->routeIs('associations*')) active @endif" href="{{ route('associations.index') }}">
+						<span data-feather="users"></span>
+						Associations
 					</a>
 				</li>
 			@endcan

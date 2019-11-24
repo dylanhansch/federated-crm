@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Customer extends Model {
 	/**
@@ -24,6 +25,15 @@ class Customer extends Model {
 	}
 
 	/**
+	 * Associations that this customer belongs to
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function associations() {
+		return $this->belongsToMany('App\Association', 'customer_associations');
+	}
+
+	/**
 	 * Customer's display name. Format: first_name last_name (company name if applicable)
 	 *
 	 * @return string
@@ -36,5 +46,25 @@ class Customer extends Model {
 		}
 
 		return $displayName;
+	}
+
+	/**
+	 * @param Association $association
+	 */
+	public function addAssociation(Association $association) {
+		DB::table('customer_associations')->insert([
+			'association_id' => $association->id,
+			'customer_id' => $this->id
+		]);
+	}
+
+	/**
+	 * @param Association $association
+	 */
+	public function removeAssociation(Association $association) {
+		DB::table('customer_associations')->where([
+			'association_id' => $association->id,
+			'customer_id' => $this->id
+		])->delete();
 	}
 }
