@@ -13,7 +13,7 @@ class CreateCustomersTable extends Migration {
 	public function up() {
 		Schema::create('customers', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->bigInteger('territory_id');
+			$table->unsignedBigInteger('territory_id');
 			$table->string('first_name');
 			$table->string('middle_name')->nullable();
 			$table->string('last_name');
@@ -30,6 +30,8 @@ class CreateCustomersTable extends Migration {
 			$table->string('email');
 			$table->enum('status', ['CURRENT', 'PREVIOUS', 'PROSPECT']);
 			$table->timestamps();
+
+			$table->foreign('territory_id')->references('id')->on('territories');
 		});
 	}
 

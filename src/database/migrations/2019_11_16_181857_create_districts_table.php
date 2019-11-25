@@ -4,18 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTerritoriesTable extends Migration {
+class CreateDistrictsTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('territories', function (Blueprint $table) {
+		Schema::create('districts', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->bigInteger('district_id');
+			$table->unsignedBigInteger('region_id');
 			$table->string('name')->unique();
 			$table->timestamps();
+
+			$table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
 		});
 	}
 
@@ -25,6 +27,6 @@ class CreateTerritoriesTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('territories');
+		Schema::dropIfExists('districts');
 	}
 }
