@@ -52,6 +52,10 @@ class Customer extends Model {
 	 * @param Association $association
 	 */
 	public function addAssociation(Association $association) {
+		if ($this->isMemberOfAssociation($association)) {
+			return;
+		}
+
 		DB::table('customer_associations')->insert([
 			'association_id' => $association->id,
 			'customer_id' => $this->id
@@ -66,5 +70,16 @@ class Customer extends Model {
 			'association_id' => $association->id,
 			'customer_id' => $this->id
 		])->delete();
+	}
+
+	/**
+	 * @param Association $association
+	 * @return bool
+	 */
+	public function isMemberOfAssociation(Association $association) {
+		return DB::table('customer_associations')->where([
+			'association_id' => $association->id,
+			'customer_id' => $this->id
+		])->exists();
 	}
 }
