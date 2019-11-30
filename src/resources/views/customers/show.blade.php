@@ -45,7 +45,7 @@
 
 	<div class="row">
 		<div class="col-md-6">
-			<p><strong>Association{{ $customer->associations->count() > 1 ? 's' : '' }}: </strong> {{ $customer->associations->implode('name', ', ') ?? 'n/a' }}</p>
+			<p><strong>Association{{ $customer->associations->count() > 1 ? 's' : '' }}: </strong> {{ $customer->associations->count() > 0 ? $customer->associations->implode('name', ', ') : 'n/a' }}</p>
 		</div>
 	</div>
 
