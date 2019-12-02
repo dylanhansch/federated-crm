@@ -40,4 +40,16 @@
 			</ul>
 		</div>
 	</div>
+
+	<div class="row" style="padding-top:25px">
+		<div class="col-md-8">
+			<h2>Overall Cultivation Loop Status</h2>
+
+			<div class="progress">
+				@foreach ($cultivationStatuses as $cultivationStatus)
+					<div class="progress-bar progress-bar-striped progress-bar-animated bg-{{ $cultivationStatus['color'] }}" role="progressbar" style="width: {{ $cultivationStatus['percentage'] }}%" aria-valuenow="{{ $cultivationStatus['percentage'] }}" aria-valuemin="0" aria-valuemax="{{ $cultivationStatus['percentage'] }}">{{ $cultivationStatus['label'] }}</div>
+				@endforeach
+			</div>
+		</div>
+	</div>
 @endsection
