@@ -42,12 +42,12 @@ body {
 
 .sidebar .nav-link {
 	font-weight: 500;
-	color: #333;
+	color: #ffffff;
 }
 
 .sidebar .nav-link .feather {
 	margin-right: 4px;
-	color: #999;
+	color: #ffffff;
 }
 
 .sidebar .nav-link.active {
@@ -86,7 +86,7 @@ body {
 	padding-top: .75rem;
 	padding-bottom: .75rem;
 	font-size: 1rem;
-	background-color: rgba(0, 0, 0, .25);
+	background-color: rgba(155, 47, 34, 1.0);
 	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
 }
 
@@ -98,16 +98,22 @@ body {
 
 .form-control-dark {
 	color: #fff;
-	background-color: rgba(255, 255, 255, .1);
+	background-color: rgba(155, 47, 34, 1.0);
 	border-color: rgba(255, 255, 255, .1);
 }
 
 .form-control-dark:focus {
 	border-color: transparent;
-	box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, .1);
 }
 
+.bg-dark {
+  background-color: #9B2F22 !important;
+}
 
+.bg-light {
+  background-color: #9B2F22 !important;
+}
 
 .flag-bg {
 	min-height: 100vh;
