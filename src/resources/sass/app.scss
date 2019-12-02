@@ -88,11 +88,17 @@ body {
  */
 
 .navbar-brand {
-	padding-top: .75rem;
+	padding-top: 4px;
 	padding-bottom: .75rem;
 	font-size: 1rem;
-	background-color: rgba(154, 51, 36, 1.0);
+	background-color: #fff;
 	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+	height: 48px;
+	max-height: 48px;
+}
+
+.brand-img {
+	max-height: 40px;
 }
 
 .navbar .form-control {
