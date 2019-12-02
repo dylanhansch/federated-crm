@@ -19,6 +19,7 @@
 			<thead>
 			<tr>
 				<th>Name</th>
+				<th>Role(s)</th>
 				<th>Actions</th>
 			</tr>
 			</thead>
@@ -26,6 +27,7 @@
 			@foreach ($users as $user)
 				<tr>
 					<td>{{ $user->getDisplayName() }}</td>
+					<td>{{ $user->roles->implode('title', ', ') }}</td>
 					<td>
 						<a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-primary" role="button"><span data-feather="edit"></span> Edit</a>
 						<form method="POST" action="{{ route('users.destroy', ['user' => $user->id]) }}" style="display:inline;">

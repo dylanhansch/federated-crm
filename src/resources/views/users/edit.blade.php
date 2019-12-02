@@ -15,6 +15,7 @@
 
 				<div class="row">
 					<div class="col-lg-12">
+						@include('layouts.success')
 						@include('layouts.errors')
 
 						<div class="form-group row">
