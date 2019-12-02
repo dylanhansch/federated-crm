@@ -61,7 +61,9 @@ class TerritoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(Territory $territory) {
-		return view('customer-groupings.territories.show', compact('territory'));
+		$customers = $territory->customers()->paginate(50);
+
+		return view('customer-groupings.territories.show', compact('territory', 'customers'));
 	}
 
 	/**
