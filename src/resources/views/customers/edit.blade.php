@@ -129,6 +129,30 @@
 					</div>
 				</div>
 
+
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Cultivation Loop Status</h3>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-md-6">
+						<ul class="list-group">
+							@foreach ($customer->cultivationLoops as $cultivationLoop)
+								<li class="list-group-item">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" name="cultivationLoops[]" value="{{ $cultivationLoop->id }}" id="cultivationLoop{{ $cultivationLoop->id }}" @if ($cultivationLoop->status === 'COMPLETE') checked @endif>
+										<label class="form-check-label" for="cultivationLoop{{ $cultivationLoop->id }}">
+											{{ $cultivationLoop->phase->name }}
+										</label>
+									</div>
+								</li>
+							@endforeach
+						</ul>
+					</div>
+				</div>
+
 				<div class="form-group row">
 					<div class="col-md-3">
 						<button class="btn btn-primary" type="submit" name="save">Save</button>

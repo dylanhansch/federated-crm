@@ -83,4 +83,27 @@
 			<p><strong>Phone Number: </strong> <a href="tel:{{ $customer->phone_number }}">{{ $customer->phone_number ?? 'n/a' }}</a></p>
 		</div>
 	</div>
+
+	<h3>Cultivation Loop Status</h3>
+	<div class="row">
+		<div class="col-md-6">
+			<ul class="list-group">
+				@foreach ($customer->cultivationLoops as $cultivationLoop)
+					@switch($cultivationLoop->status)
+						@case('COMPLETE')
+							@php $displayTag = 'success'; @endphp
+							@break
+						@case('IN-PROGRESS')
+							@php $displayTag = 'warning'; @endphp
+							@break
+						@case('NOT-STARTED')
+							@php $displayTag = 'danger'; @endphp
+							@break
+					@endswitch
+
+					<li class="list-group-item list-group-item-{{ $displayTag }}">{{ $cultivationLoop->phase->name }}</li>
+				@endforeach
+			</ul>
+		</div>
+	</div>
 @endsection

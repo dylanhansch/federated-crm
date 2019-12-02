@@ -201,6 +201,22 @@ class CustomerController extends Controller {
 			}
 		}
 
+		$cultivationLoops = $customer->cultivationLoops;
+		foreach ($cultivationLoops as $cultivationLoop) {
+			if (!isset($requestData['cultivationLoops'])) {
+				$cultivationLoop->status = 'NOT-STARTED';
+				$cultivationLoop->save();
+				continue;
+			}
+			if (in_array($cultivationLoop->id, $requestData['cultivationLoops'])) {
+				$cultivationLoop->status = 'COMPLETE';
+				$cultivationLoop->save();
+			} else {
+				$cultivationLoop->status = 'NOT-STARTED';
+				$cultivationLoop->save();
+			}
+		}
+
 		return redirect()->route('customers.edit', ['customer' => $customer->id])->with('success', "Updated \"{$customer->getDisplayName()}\"");
 	}
 

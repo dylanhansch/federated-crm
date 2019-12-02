@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\NewCustomerEvent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +14,10 @@ class Customer extends Model {
 	 */
 	protected $guarded = [
 		'id'
+	];
+
+	protected $dispatchesEvents = [
+		'created' => NewCustomerEvent::class
 	];
 
 	/**
@@ -31,6 +36,15 @@ class Customer extends Model {
 	 */
 	public function associations() {
 		return $this->belongsToMany('App\Association', 'customer_associations');
+	}
+
+	/**
+	 * Cultivation loop steps that are currently assigned to this customer/are tracked for this customer
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function cultivationLoops() {
+		return $this->hasMany('App\CultivationLoop');
 	}
 
 	/**
