@@ -104,6 +104,66 @@ class User extends Authenticatable {
 	}
 
 	/**
+	 * Get an array containing the percentage completion (of each stage [complete, in-progress, not-started])
+	 * of all of user's cultivation loops.
+	 *
+	 * TODO: This really should be refactored - it's garbage
+	 *
+	 * @return array
+	 */
+	public function getCultivationLoopStatus() {
+		$customers = $this->customers();
+
+		$cultivationComplete = 0;
+		$cultivationInProgress = 0;
+		$cultivationNotStarted = 0;
+
+		foreach ($customers as $customer) {
+			$customer = Customer::find($customer->id);
+
+			foreach ($customer->cultivationLoops as $loop) {
+				switch ($loop->status) {
+					case 'COMPLETE':
+						$cultivationComplete++;
+						break;
+					case 'IN-PROGRESS':
+						$cultivationInProgress++;
+						break;
+					case 'NOT-STARTED':
+						$cultivationNotStarted++;
+						break;
+				}
+			}
+		}
+
+		$total = $cultivationComplete + $cultivationInProgress + $cultivationNotStarted;
+
+		$cultivationStatuses = [];
+
+		if ($total != 0) {
+			$cultivationStatuses = [
+				[
+					'label' => 'Not Started',
+					'percentage' => ($cultivationNotStarted / $total) * 100,
+					'color' => 'danger'
+				],
+				[
+					'label' => 'In-Progress',
+					'percentage' => ($cultivationInProgress / $total) * 100,
+					'color' => 'warning'
+				],
+				[
+					'label' => 'Complete',
+					'percentage' => ($cultivationComplete / $total) * 100,
+					'color' => 'success'
+				]
+			];
+		}
+
+		return $cultivationStatuses;
+	}
+
+	/**
 	 * Customers that user has access to (likely is responsible for working with in some capacity)
 	 *
 	 * @return \Illuminate\Support\Collection
