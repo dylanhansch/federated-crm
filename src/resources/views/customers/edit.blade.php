@@ -4,7 +4,11 @@
 
 @section('content')
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-		<h1 class="h2">Edit Customer: {{ $customer->getDisplayName() }}</h1>
+		<h1 class="h2">
+			Edit Customer: {{ $customer->getDisplayName() }}
+
+			<a href="{{ route('customers.show', ['customer' => $customer->id]) }}" class="btn btn-info" role="button"><span data-feather="eye"></span> View</a>
+		</h1>
 	</div>
 
 	<form method="POST" action="{{ route('customers.update', ['customer' => $customer->id]) }}" role="form">
@@ -155,7 +159,7 @@
 
 				<div class="form-group row">
 					<div class="col-md-3">
-						<button class="btn btn-primary" type="submit" name="save">Save</button>
+						<button class="btn btn-primary" type="submit" name="save"><span data-feather="save"></span> Save</button>
 					</div>
 				</div>
 			</div>

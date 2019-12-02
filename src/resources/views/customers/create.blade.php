@@ -130,7 +130,7 @@
 
 				<div class="form-group row">
 					<div class="col-md-3">
-						<button class="btn btn-primary" type="submit" name="add">Add</button>
+						<button class="btn btn-primary" type="submit" name="add"><span data-feather="plus"></span> Add</button>
 					</div>
 				</div>
 			</div>

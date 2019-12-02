@@ -23,7 +23,7 @@
 
 				<div class="form-group row">
 					<div class="col-md-3">
-						<button class="btn btn-primary" type="submit" name="create">Create</button>
+						<button class="btn btn-primary" type="submit" name="create"><span data-feather="plus"></span> Create</button>
 					</div>
 				</div>
 			</div>

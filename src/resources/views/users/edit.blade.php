@@ -61,7 +61,7 @@
 
 						<div class="form-group row">
 							<div class="col-md-3">
-								<button class="btn btn-primary" type="submit" name="save">Save</button>
+								<button class="btn btn-primary" type="submit" name="save"><span data-feather="save"></span> Save</button>
 							</div>
 						</div>
 					</div>

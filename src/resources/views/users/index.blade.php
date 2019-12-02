@@ -7,7 +7,7 @@
 		<h1 class="h2">Users</h1>
 		@can('create-users')
 			<div class="btn-toolbar mb-2 mb-md-0">
-				<a href="{{ route('users.create') }}" class="btn btn-primary"><span data-feather="plus"></span> Create</a>
+				<a href="{{ route('users.create') }}" class="btn btn-primary" role="button"><span data-feather="plus"></span> Create</a>
 			</div>
 		@endcan
 	</div>
@@ -27,11 +27,11 @@
 				<tr>
 					<td>{{ $user->getDisplayName() }}</td>
 					<td>
-						<a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-primary">Edit</a>
+						<a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-primary" role="button"><span data-feather="edit"></span> Edit</a>
 						<form method="POST" action="{{ route('users.destroy', ['user' => $user->id]) }}" style="display:inline;">
 							@csrf
 							@method('DELETE')
-							<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $user->getDisplayName() }}?');">Delete</button>
+							<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $user->getDisplayName() }}?');"><span data-feather="trash-2"></span> Delete</button>
 						</form>
 					</td>
 				</tr>

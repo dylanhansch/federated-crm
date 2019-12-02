@@ -7,7 +7,7 @@
 		<h1 class="h2">Customers</h1>
 		@can('create-customers')
 			<div class="btn-toolbar mb-2 mb-md-0">
-				<a href="{{ route('customers.create') }}" class="btn btn-primary"><span data-feather="plus"></span> Add</a>
+				<a href="{{ route('customers.create') }}" class="btn btn-primary" role="button"><span data-feather="plus"></span> Add</a>
 			</div>
 		@endcan
 	</div>
@@ -27,11 +27,11 @@
 					<tr>
 						<td><a href="{{ route('customers.show', ['customer' => $customer->id]) }}">{{ $customer->getDisplayName() }}</a></td>
 						<td>
-							<a href="{{ route('customers.edit', ['customer' => $customer->id]) }}" class="btn btn-primary">Edit</a>
+							<a href="{{ route('customers.edit', ['customer' => $customer->id]) }}" class="btn btn-primary" role="button"><span data-feather="edit"></span> Edit</a>
 							<form method="POST" action="{{ route('customers.destroy', ['customer' => $customer->id]) }}" style="display:inline;">
 								@csrf
 								@method('DELETE')
-								<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $customer->getDisplayName() }}?');">Delete</button>
+								<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $customer->getDisplayName() }}?');"><span data-feather="trash-2"></span> Delete</button>
 							</form>
 						</td>
 					</tr>

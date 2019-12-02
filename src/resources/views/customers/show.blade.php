@@ -7,6 +7,8 @@
 		<h1 class="h2">
 			Customer: {{ $customer->getDisplayName() }}
 
+			<a href="{{ route('customers.edit', ['customer' => $customer->id]) }}" class="btn btn-info" role="button"><span data-feather="edit"></span> Edit</a>
+
 			@if ($customer->status === 'CURRENT')
 				<span class="badge badge-pill badge-success">Status: Current</span>
 			@elseif ($customer->status === 'PREVIOUS')

@@ -7,7 +7,7 @@
 		<h1 class="h2">Associations</h1>
 		@can('create-associations')
 			<div class="btn-toolbar mb-2 mb-md-0">
-				<a href="{{ route('associations.create') }}" class="btn btn-primary"><span data-feather="plus"></span> Create</a>
+				<a href="{{ route('associations.create') }}" class="btn btn-primary" role="button"><span data-feather="plus"></span> Create</a>
 			</div>
 		@endcan
 	</div>
@@ -28,13 +28,13 @@
 						<td><a href="{{ route('associations.show', ['association' => $association->id]) }}">{{ $association->name }}</a></td>
 						<td>
 							@can('edit-associations')
-								<a href="{{ route('associations.edit', ['association' => $association->id]) }}" class="btn btn-primary">Edit</a>
+								<a href="{{ route('associations.edit', ['association' => $association->id]) }}" class="btn btn-primary" role="button"><span data-feather="edit"></span> Edit</a>
 							@endcan
 							@can('destroy-associations')
 								<form method="POST" action="{{ route('associations.destroy', ['association' => $association->id]) }}" style="display:inline;">
 									@csrf
 									@method('DELETE')
-									<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $association->name }}?');">Delete</button>
+									<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $association->name }}?');"><span data-feather="trash-2"></span> Delete</button>
 								</form>
 							@endcan
 						</td>

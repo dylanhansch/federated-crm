@@ -6,7 +6,7 @@
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<h1 class="h2">Territories</h1>
 		<div class="btn-toolbar mb-2 mb-md-0">
-			<a href="{{ route('territories.create') }}" class="btn btn-primary"><span data-feather="plus"></span> Create</a>
+			<a href="{{ route('territories.create') }}" class="btn btn-primary" role="button"><span data-feather="plus"></span> Create</a>
 		</div>
 	</div>
 
@@ -31,11 +31,11 @@
 					<td><a href="{{ route('regions.show', ['region' => $territory->district->region->id]) }}">{{ $territory->district->region->name }}</a></td>
 					<td>{{ $territory->getAssignedUsers()->implode('first_name', ', ') }}</td>
 					<td>
-						<a href="{{ route('territories.edit', ['territory' => $territory->id]) }}" class="btn btn-primary">Edit</a>
+						<a href="{{ route('territories.edit', ['territory' => $territory->id]) }}" class="btn btn-primary" role="button"><span data-feather="edit"></span> Edit</a>
 						<form method="POST" action="{{ route('territories.destroy', ['territory' => $territory->id]) }}" style="display:inline;">
 							@csrf
 							@method('DELETE')
-							<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $territory->name }}?');">Delete</button>
+							<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $territory->name }}?');"><span data-feather="trash-2"></span> Delete</button>
 						</form>
 					</td>
 				</tr>
