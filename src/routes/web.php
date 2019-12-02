@@ -33,3 +33,8 @@ Route::post('/territories/{territory}/addAssignedUser', 'TerritoryController@add
 Route::delete('/territories/{territory}/removeAssignedUser/{user}', 'TerritoryController@removeAssignedUser')->name('territories.removeAssignedUser');
 
 Route::resource('/associations', 'AssociationController');
+
+Route::prefix('/reports')->namespace('Reports')->group(function () {
+	Route::get('/', 'ListReportsController@index')->name('reports.index');
+	Route::get('/cultivation-loop-statuses', 'CultivationLoopStatusesReportController@index')->name('reports.cultivation-loop-statuses');
+});

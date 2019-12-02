@@ -59,6 +59,14 @@
 					</a>
 				</li>
 			@endcan
+			@can('view-reports')
+				<li class="nav-item">
+					<a class="nav-link @if(request()->routeIs('reports*')) active @endif" href="{{ route('reports.index') }}">
+						<span data-feather="book"></span>
+						Reports
+					</a>
+				</li>
+			@endcan
 		</ul>
 
 		<!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
