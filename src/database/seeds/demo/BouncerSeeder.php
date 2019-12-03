@@ -36,6 +36,9 @@ class BouncerSeeder extends Seeder {
 		\Bouncer::allow('regional-marketing-manager')->to('create-users');
 		\Bouncer::allow('regional-marketing-manager')->to('edit-users');
 		\Bouncer::allow('regional-marketing-manager')->to('delete-users');
+		\Bouncer::allow('regional-marketing-manager')->to('create-customer-contacts');
+		\Bouncer::allow('regional-marketing-manager')->to('edit-customer-contacts');
+		\Bouncer::allow('regional-marketing-manager')->to('destroy-customer-contacts');
 
 		\Bouncer::allow('district-marketing-manager')->to('view-reports');
 		\Bouncer::allow('district-marketing-manager')->to('view-cultivation-loop-statuses-report');
@@ -60,6 +63,9 @@ class BouncerSeeder extends Seeder {
 		\Bouncer::allow('district-marketing-manager')->to('create-users');
 		\Bouncer::allow('district-marketing-manager')->to('edit-users');
 		\Bouncer::allow('district-marketing-manager')->to('delete-users');
+		\Bouncer::allow('district-marketing-manager')->to('create-customer-contacts');
+		\Bouncer::allow('district-marketing-manager')->to('edit-customer-contacts');
+		\Bouncer::allow('district-marketing-manager')->to('destroy-customer-contacts');
 
 		\Bouncer::allow('home-office-team')->to('view-associations');
 		\Bouncer::allow('home-office-team')->to('create-associations');
@@ -78,10 +84,16 @@ class BouncerSeeder extends Seeder {
 		\Bouncer::allow('home-office-team')->to('edit-territories');
 		\Bouncer::allow('home-office-team')->to('destroy-territories');
 		\Bouncer::allow('home-office-team')->to('create-customers');
+		\Bouncer::allow('home-office-team')->to('create-customer-contacts');
+		\Bouncer::allow('home-office-team')->to('edit-customer-contacts');
+		\Bouncer::allow('home-office-team')->to('destroy-customer-contacts');
 
 		\Bouncer::allow('marketing-representative')->to('view-associations');
 		\Bouncer::allow('marketing-representative')->to('create-associations');
 		\Bouncer::allow('marketing-representative')->to('edit-associations');
 		\Bouncer::allow('marketing-representative')->to('create-customers');
+		\Bouncer::allow('marketing-representative')->to('create-customer-contacts');
+		\Bouncer::allow('marketing-representative')->to('edit-customer-contacts');
+		\Bouncer::allow('marketing-representative')->to('destroy-customer-contacts');
 	}
 }

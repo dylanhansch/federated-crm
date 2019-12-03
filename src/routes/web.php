@@ -19,6 +19,7 @@ Route::get('/', 'DashboardController@index')->name('dashboard');
 Route::resource('/users', 'UserController');
 
 Route::resource('/customers', 'CustomerController');
+Route::resource('/customers/{customer}/contacts', 'CustomerContactController')->except(['index']);
 
 Route::resource('/regions', 'RegionController');
 Route::post('/regions/{region}/addAssignedUser', 'RegionController@addAssignedUser')->name('regions.addAssignedUser');

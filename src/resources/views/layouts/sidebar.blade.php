@@ -8,7 +8,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link @if(request()->routeIs('customers*')) active @endif" href="{{ route('customers.index') }}">
+				<a class="nav-link @if(request()->routeIs('customers*') || request()->routeIs('contacts*')) active @endif" href="{{ route('customers.index') }}">
 					<span data-feather="users"></span>
 					Customers
 				</a>

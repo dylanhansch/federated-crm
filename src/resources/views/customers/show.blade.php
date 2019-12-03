@@ -110,4 +110,41 @@
 			</ul>
 		</div>
 	</div>
+
+	<h3>Additional Contacts @can('create-customer-contacts') <a href="{{ route('contacts.create', ['customer' => $customer->id]) }}" class="btn btn-info btn-sm" role="button"><span data-feather="plus"></span> Add</a> @endcan</h3>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="table-responsive">
+				<table class="table table-striped table-sm">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Type</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						@forelse ($customer->contacts as $contact)
+							<tr>
+								<td><a href="{{ route('contacts.show', ['customer' => $customer->id, 'contact' => $contact->id]) }}">{{ $contact->getDisplayName() }}</a></td>
+								<td>{{ $contact->type }}</td>
+								<td>
+									<a href="{{ route('contacts.edit', ['customer' => $customer->id, 'contact' => $contact->id]) }}" class="btn btn-primary" role="button"><span data-feather="edit"></span> Edit</a>
+									<form method="POST" action="{{ route('contacts.destroy', ['customer' => $customer->id, 'contact' => $contact->id]) }}" style="display:inline;">
+										@csrf
+										@method('DELETE')
+										<button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete {{ $contact->getDisplayName() }}?');"><span data-feather="trash-2"></span> Delete</button>
+									</form>
+								</td>
+							</tr>
+						@empty
+							<td>No additional contacts. @can('create-customer-contacts') <a href="{{ route('contacts.create', ['customer' => $customer->id]) }}">Add one</a>! @endcan</td>
+							<td></td>
+							<td></td>
+						@endforelse
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 @endsection

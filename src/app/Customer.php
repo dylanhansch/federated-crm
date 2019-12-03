@@ -48,6 +48,15 @@ class Customer extends Model {
 	}
 
 	/**
+	 * Contacts that are associated with this customer
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function contacts() {
+		return $this->hasMany('App\CustomerContact');
+	}
+
+	/**
 	 * Customer's display name. Format: first_name last_name (company name if applicable)
 	 *
 	 * @return string
