@@ -21,6 +21,8 @@
 		</h1>
 	</div>
 
+	@include('layouts.success')
+
 	<div class="row">
 		<div class="col-md-3">
 			<p><strong>First name: </strong> {{ $customer->first_name ?? 'n/a' }}</p>

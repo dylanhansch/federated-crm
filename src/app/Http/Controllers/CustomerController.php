@@ -90,7 +90,7 @@ class CustomerController extends Controller {
 			}
 		}
 
-		return redirect()->route('customers.index')->with('success', "Created \"{$customer->getDisplayName()}\"");
+		return redirect()->route('customers.show', ['customer' => $customer->id])->with('success', "Created \"{$customer->getDisplayName()}\"");
 	}
 
 	/**
