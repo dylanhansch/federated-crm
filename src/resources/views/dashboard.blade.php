@@ -41,7 +41,7 @@
 		</div>
 	</div>
 
-	<div class="row" style="padding-top:25px">
+	<div class="row">
 		<div class="col-md-8">
 			<h2>Overall Cultivation Loop Status</h2>
 
