@@ -51,6 +51,9 @@
 		<div class="col-md-6">
 			<p><strong>Association{{ $customer->associations->count() > 1 ? 's' : '' }}: </strong> {{ $customer->associations->count() > 0 ? $customer->associations->implode('name', ', ') : 'n/a' }}</p>
 		</div>
+		<div class="col-md-3">
+			<p><strong>Birthday: </strong> {{ $customer->birth_date ?? 'n/a' }}</p>
+		</div>
 	</div>
 
 	<h3>Address</h3>

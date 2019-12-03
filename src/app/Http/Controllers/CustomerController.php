@@ -69,7 +69,8 @@ class CustomerController extends Controller {
 			'subdivision' => 'required|string|max:255',
 			'postal_code' => 'required|string|max:10',
 			'country' => 'required|string|max:255',
-			'associations[]' => 'nullable|string|max:255'
+			'associations[]' => 'nullable|string|max:255',
+			'birth_date' => 'nullable|date'
 		]);
 
 		if ($validator->fails()) {
@@ -147,7 +148,8 @@ class CustomerController extends Controller {
 			'subdivision' => 'required|string|max:255',
 			'postal_code' => 'required|string|max:10',
 			'country' => 'required|string|max:255',
-			'associations[]' => 'nullable|string|max:255'
+			'associations[]' => 'nullable|string|max:255',
+			'birth_date' => 'nullable|date'
 		]);
 
 		if ($validator->fails()) {
@@ -174,7 +176,8 @@ class CustomerController extends Controller {
 			'city',
 			'subdivision',
 			'postal_code',
-			'country'
+			'country',
+			'birth_date'
 		];
 
 		foreach ($fields as $field) {

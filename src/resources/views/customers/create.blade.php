@@ -64,6 +64,13 @@
 						</select>
 					</div>
 					<div class="col-md-3">
+						<label for="birth_date">Birthday:</label>
+						<input type="date" class="form-control{{ $errors->has('birth_date') ? ' is-invalid' : '' }}" name="birth_date" id="birth_date" value="{{ old('birth_date') }}">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-md-3">
 						<label for="associations">Associations:</label>
 						<select class="form-control" name="associations[]" id="associations" multiple>
 							@foreach ($associations as $association)
