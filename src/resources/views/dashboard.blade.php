@@ -37,6 +37,25 @@
 						</label>
 					</div>
 				</li>
+				<li class="list-group-item">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="todoCheck4">
+						<label class="form-check-label" for="todoCheck4">
+							Make To-Do & Upcoming Events actually work
+						</label>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-4">
+			<h2>Upcoming Events</h2>
+
+			<ul class="list-group">
+				<li class="list-group-item list-group-item-danger">Super Urgent Meeting (12/4/2019 8:00 AM)</li>
+				<li class="list-group-item list-group-item-warning">Bob's Birthday (12/5/2019)</li>
+				<li class="list-group-item">Jimmy's Birthday (12/6/2019)</li>
+				<li class="list-group-item">Jimmy's Annual Review (12/16/2019 2:00 PM)</li>
 			</ul>
 		</div>
 	</div>
