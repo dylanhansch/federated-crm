@@ -1,5 +1,5 @@
-# Federated CRM
-This is a customer relationship management system built for Federated Insurance in MNSU's IT380 class.
+# IT380 Project: Federated Insurance CRM
+This is a demo of our group's system implementation we created for MNSU's IT380 class (System Analysis and Design). Our primary task was to create the use-case diagrams, data flow diagrams, context diagrams, ERD, UI mockups, and other system design/architecture documentation for a fictional CRM for Federated Insurance to fulfill customer requirements. Although the primary purpose of this group project was not the actual programming, we were able to deliver this reasonably functional demo in the last few weeks of the project for our final presentation.
 
 ### Running The App Locally
 1. Make sure all dependencies are installed, .env is correct, any initialization is done, etc. For help with this: https://github.com/dylanhansch/federated-crm/wiki/Setup
